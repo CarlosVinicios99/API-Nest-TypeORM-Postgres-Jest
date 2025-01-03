@@ -1,6 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Course } from './entities/course.entity';
-import { findIndex } from 'rxjs';
 
 @Injectable()
 export class CoursesService {
@@ -25,6 +24,8 @@ export class CoursesService {
     if(!course){
       throw new HttpException(`Course with ID ${id} not found`, HttpStatus.NOT_FOUND)
     }
+
+    return course
 
   }
 
