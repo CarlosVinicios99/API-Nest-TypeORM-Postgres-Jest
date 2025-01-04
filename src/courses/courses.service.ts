@@ -33,7 +33,9 @@ export class CoursesService {
   }
 
   async findAll(){
-    return await this.courseRepository.find()
+    return await this.courseRepository.find({
+      relations: ['tags']
+    })
   }
 
   async findOne(id: number){
@@ -41,7 +43,8 @@ export class CoursesService {
     const course: Course = await this.courseRepository.findOne({
       where: {
         id
-      }
+      },
+      relations: ['tags']
     })
 
     if(!course){
