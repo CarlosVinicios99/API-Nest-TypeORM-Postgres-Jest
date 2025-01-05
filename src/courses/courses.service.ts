@@ -38,7 +38,7 @@ export class CoursesService {
     })
   }
 
-  async findOne(id: number){
+  async findOne(id: string){
 
     const course: Course = await this.courseRepository.findOne({
       where: {
@@ -65,7 +65,7 @@ export class CoursesService {
     return await this.courseRepository.save(course)
   }
 
-  async update(id: number, updateCourseDTO: UpdateCourseDTO){
+  async update(id: string, updateCourseDTO: UpdateCourseDTO){
 
     const tags: Tag[] = 
     updateCourseDTO.tags &&
@@ -84,7 +84,7 @@ export class CoursesService {
     return this.courseRepository.save(course)
   }
 
-  async remove(id: number){
+  async remove(id: string){
 
     const course: Course = await this.courseRepository.findOne({
       where: {
