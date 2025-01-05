@@ -4,19 +4,19 @@ export class AddTagsIdToCoursesTagsTable1736100429108 implements MigrationInterf
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.addColumn(
-            'courses_tags',
+            'courses_tags_tags',
             new TableColumn({
-                name: 'tag_id',
+                name: 'tagsId',
                 type: 'uuid',
                 isNullable: true
             })
         )
 
         await queryRunner.createForeignKey(
-            'courses_tags',
+            'courses_tags_tags',
             new TableForeignKey({
                 name: 'courses_tags_tags',
-                columnNames: ['tag_id'],
+                columnNames: ['tagsId'],
                 referencedTableName: 'tags',
                 referencedColumnNames: ['id'],
                 onDelete: 'SET NULL'
@@ -26,13 +26,13 @@ export class AddTagsIdToCoursesTagsTable1736100429108 implements MigrationInterf
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey(
-            'courses_tags',
+            'courses_tags_tags',
             'courses_tags_tags'
         )
 
         await queryRunner.dropColumn(
-            'courses_tags',
-            'tag_id'
+            'courses_tags_tags',
+            'tagsId'
         )
     }
 
