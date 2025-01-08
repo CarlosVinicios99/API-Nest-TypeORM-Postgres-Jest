@@ -9,13 +9,11 @@ import { UpdateCourseDTO } from './dto/update-course.dto';
 @Injectable()
 export class CoursesService {
 
-  constructor(
-    @InjectRepository(Course)
-    private readonly courseRepository: Repository<Course>,
+  @InjectRepository(Course)
+  private readonly courseRepository: Repository<Course>
 
-    @InjectRepository(Tag)
-    private readonly tagRepository: Repository<Tag>
-  ){}
+  @InjectRepository(Tag)
+  private readonly tagRepository: Repository<Tag>
 
   private async preloadTagByName(name: string): Promise<Tag> {
 
