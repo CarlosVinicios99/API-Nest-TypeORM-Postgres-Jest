@@ -95,4 +95,17 @@ describe('CoursesService unit tests', () => {
     expect(expectOutputCourses).toStrictEqual(courses)
   })
 
+  it('should gets a course by id', async () => {
+    //@ts-expect-error defined part of methods
+    service['courseRepository'] = mockCourseRepository
+
+    //@ts-expect-error defined part of methods
+    service['tagRepository'] = mockTagsRepository
+
+    const course = await service.findOne(id)
+
+    expect(mockCourseRepository.findOne).toHaveBeenCalled()
+    expect(expectOutputCourses).toStrictEqual(course)
+  })
+
 });
