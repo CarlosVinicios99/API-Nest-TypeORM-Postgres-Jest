@@ -11,4 +11,14 @@ services:
       - .docker/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=courses  
+  db-test:
+    build: .
+    container_name: test-db
+    restart: always
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=courses
+  
