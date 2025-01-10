@@ -140,4 +140,16 @@ describe('CoursesController e2e tests', () => {
     })
   })
 
+  describe('DELETE /courses/:id', () => {
+
+    it('should delete a course by id', async () => {
+      
+      const res = await request(app.getHttpServer())
+        .delete(`/courses/${courses[0].id}`)
+        .expect(204)
+        .expect({})
+
+    })
+  })
+
 });
